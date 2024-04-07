@@ -28,7 +28,7 @@ to_date.send_keys(Keys.CONTROL + "a")
 to_date.send_keys(Keys.BACKSPACE)
 time.sleep(1)
 to_date.send_keys('2024-07-04')
-time.sleep(1)
+driver.find_element(By.XPATH,"//div[@class='orangehrm-card-container']").click()
 
 driver.find_elements(By.XPATH,"//div[@class='oxd-select-text--after']//i")[1].click()
 time.sleep(1)
@@ -52,6 +52,9 @@ time.sleep(1)
 length=len(driver.find_elements(By.XPATH,"//button[text()=' Cancel ']"))
 for i in range(length):
     driver.find_elements(By.XPATH, "//button[text()=' Cancel ']")[i].click()
+
+
+
 # time.sleep(1)
 # driver.find_elements(By.XPATH,"//button[text()=' Cancel ']")[1].click()
 # time.sleep(1)

@@ -1,16 +1,21 @@
 import time
 from base import BasePage
-from selenium.webdriver.common.by import By
 
 class Login(BasePage):
         def __init__(self,driver):
             super().__init__(driver)
 
         def login_user(self,username,password):
-            self.driver.get("https://opensource-demo.orangehrmlive.com/")
-            self.driver.find_element(By.NAME, "username").send_keys(username)
+            self.launch("https://opensource-demo.orangehrmlive.com/")
+            self.find_element("name", "username").send_keys(username)
             self.sleep_for_seconds()
-            self.driver.find_element(By.NAME, "password").send_keys(password)
+            self.find_element("name", "password").send_keys(password)
             self.sleep_for_seconds()
-            self.driver.find_element(By.XPATH, "//button[@type='submit']").click()
+            self.find_element("xpath", "//button[@type='submit']").click()
             self.sleep_for_seconds()
+
+        def logout_user(self):
+            self.find_element("xpath","//span[@class='oxd-userdropdown-tab']").click()
+            self.sleep_for_seconds()
+            self.find_element("xpath","//ul[@class='oxd-dropdown-menu']/li/a[text()='Logout']").click()
+            self.sleep_for_seconds(4)
